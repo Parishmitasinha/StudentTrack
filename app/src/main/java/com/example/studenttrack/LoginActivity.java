@@ -52,7 +52,6 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(intent);
                         finish(); // Close LoginActivity
                     } else {
-                        // If sign in fails, display a message to the user.
                         try {
                             throw task.getException();
                         } catch (FirebaseAuthInvalidUserException e) {

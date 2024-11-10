@@ -56,18 +56,15 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
-        // Create user with Firebase Authentication
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
-                        // Registration successful, navigate to WelcomeActivity
                         Toast.makeText(RegisterActivity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(RegisterActivity.this, WelcomeActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
-                        finish(); // Close the RegisterActivity
+                        finish();
                     } else {
-                        // If registration fails, display a message to the user.
                         try {
                             throw task.getException();
                         } catch (FirebaseAuthUserCollisionException e) {
